@@ -59,6 +59,7 @@ void Model::draw(GLuint &shaderID)
 void Model::setupBuffers()
 {    
     // Create and bind the Vertex Array Object (VAO)
+    GLuint VAO;
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
     
@@ -97,17 +98,6 @@ void Model::setupBuffers()
     
      // Unbind the VAO
     glBindVertexArray(0);
-}
-
-// Delete the buffers
-void Model::deleteBuffers()
-{
-    glDeleteBuffers(1, &vertexBuffer);
-    glDeleteBuffers(1, &uvBuffer);
-    glDeleteBuffers(1, &normalBuffer);
-    glDeleteBuffers(1, &tangentBuffer);
-    glDeleteBuffers(1, &bitangentBuffer);
-    glDeleteVertexArrays(1, &VAO);
 }
 
 // Load an .obj model

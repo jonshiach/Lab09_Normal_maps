@@ -37,18 +37,8 @@ public:
     // Add texture
     void addTexture(const char *path, const std::string type);
     
-    // Cleanup
-    void deleteBuffers();
-    
 private:
-    
-    // Array buffers
     GLuint VAO;
-    GLuint vertexBuffer;
-    GLuint uvBuffer;
-    GLuint normalBuffer;
-    GLuint tangentBuffer;
-    GLuint bitangentBuffer;
     
     // Load .obj file method
     void loadObj(const char *path);

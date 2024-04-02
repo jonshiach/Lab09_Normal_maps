@@ -27,8 +27,6 @@ public:
     float ks = 1.0f;
     float Ns = 20.0f;
     GLuint textureID;
-    std::vector<glm::vec3> tangents;
-    std::vector<glm::vec3> bitangents;
     
     // Constructor
     Model(const char *path);
@@ -60,7 +58,4 @@ private:
     
     // Load texture
     unsigned int loadTexture(const char *path);
-    
-    // Calculate tangents and bitangents
-    void calculateTangents();
 };

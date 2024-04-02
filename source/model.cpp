@@ -95,28 +95,6 @@ void Model::setupBuffers()
     glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
     
-    // Create tangent buffer
-    GLuint tangentBuffer;
-    glGenBuffers(1, &tangentBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, tangentBuffer);
-    glBufferData(GL_ARRAY_BUFFER, tangents.size() * sizeof(glm::vec3), &tangents[0], GL_STATIC_DRAW);
-    
-    // Create bitangent buffer
-    GLuint bitangentBuffer;
-    glGenBuffers(1, &bitangentBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, bitangentBuffer);
-    glBufferData(GL_ARRAY_BUFFER, bitangents.size() * sizeof(glm::vec3), &bitangents[0], GL_STATIC_DRAW);
-    
-    // Bind the tangent buffer
-    glEnableVertexAttribArray(3);
-    glBindBuffer(GL_ARRAY_BUFFER, tangentBuffer);
-    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-    
-    // Bind the bitangent buffer
-    glEnableVertexAttribArray(4);
-    glBindBuffer(GL_ARRAY_BUFFER, bitangentBuffer);
-    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-    
      // Unbind the VAO
     glBindVertexArray(0);
 }

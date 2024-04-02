@@ -37,7 +37,7 @@ int main( void )
     glfwWindowHint(GLFW_RESIZABLE,GL_FALSE);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
@@ -100,7 +100,6 @@ int main( void )
     // Define light colours
     glm::vec3 white = glm::vec3(1.0f, 1.0f, 1.0f);
     glm::vec3 yellow = glm::vec3(1.0f, 1.0f, 0.0f);
-    glm::vec3 black = glm::vec3(0.0f, 0.0f, 0.0f);
     
     // Specify light sources
     Light lightSources;

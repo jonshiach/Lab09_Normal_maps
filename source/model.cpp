@@ -1,12 +1,8 @@
 #include <vector>
-#include <stdio.h>
-#include <string>
-#include <cstring>
 #include <iostream>
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-#include <glm/gtx/io.hpp>
 
 #include "model.hpp"
 

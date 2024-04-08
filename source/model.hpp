@@ -1,7 +1,8 @@
 #pragma once
 
-#include <string>
 #include <vector>
+#include <string>
+
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
@@ -24,7 +25,6 @@ public:
     float kd = 0.7f;
     float ks = 1.0f;
     float Ns = 20.0f;
-    GLuint textureID;
     
     // Constructor
     Model(const char *path);
@@ -36,7 +36,14 @@ public:
     void addTexture(const char *path, const std::string type);
     
 private:
+    
+    // Array buffers
     GLuint VAO;
+    GLuint vertexBuffer;
+    GLuint uvBuffer;
+    GLuint normalBuffer;
+    GLuint tangentBuffer;
+    GLuint bitangentBuffer;
     
     // Load .obj file method
     void loadObj(const char *path);
@@ -46,4 +53,7 @@ private:
     
     // Load texture
     unsigned int loadTexture(const char *path);
+    
+    // Calculate tangents and bitangents
+    void calculateTangents();
 };

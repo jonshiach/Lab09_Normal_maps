@@ -1,8 +1,12 @@
+#include <iostream>
+#include <cmath>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/io.hpp>
 
 #include "shader.hpp"
 #include "camera.hpp"
@@ -31,7 +35,7 @@ int main( void )
     glfwWindowHint(GLFW_RESIZABLE,GL_FALSE);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
@@ -150,7 +154,7 @@ int main( void )
             glUniform1f(glGetUniformLocation(shaderID, "ks"), teapot.ks);
             glUniform1f(glGetUniformLocation(shaderID, "Ns"), teapot.Ns);
             
-            // Draw the model
+            // Draw the object
             teapot.draw(shaderID);
         }
         

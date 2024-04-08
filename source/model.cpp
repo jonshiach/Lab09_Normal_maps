@@ -1,8 +1,11 @@
 #include <vector>
+#include <string>
+#include <cstring>
 #include <iostream>
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <glm/gtx/io.hpp>
 
 #include "model.hpp"
 
@@ -55,7 +58,6 @@ void Model::draw(GLuint &shaderID)
 void Model::setupBuffers()
 {    
     // Create and bind the Vertex Array Object (VAO)
-    GLuint VAO;
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
     

@@ -149,10 +149,10 @@ int main( void )
             glUniformMatrix4fv(glGetUniformLocation(shaderID, "model"), 1, GL_FALSE, &model[0][0]);
             
             // Send material properties to the shader
-            glUniform1f(glGetUniformLocation(shaderID, "ka"), teapot.ka);
-            glUniform1f(glGetUniformLocation(shaderID, "kd"), teapot.kd);
-            glUniform1f(glGetUniformLocation(shaderID, "ks"), teapot.ks);
-            glUniform1f(glGetUniformLocation(shaderID, "Ns"), teapot.Ns);
+            glUniform1f(glGetUniformLocation(shaderID, "ka"), 0.2f);
+            glUniform1f(glGetUniformLocation(shaderID, "kd"), 0.7f);
+            glUniform1f(glGetUniformLocation(shaderID, "ks"), 1.0f);
+            glUniform1f(glGetUniformLocation(shaderID, "Ns"), 20.0f);
             
             // Draw the object
             teapot.draw(shaderID);

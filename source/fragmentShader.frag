@@ -24,7 +24,6 @@ struct Light
 
 // Uniforms
 uniform sampler2D diffuseMap;
-uniform sampler2D normalMap;
 uniform Light lights[maxLights];
 uniform int numPoint;
 uniform int numSpot;

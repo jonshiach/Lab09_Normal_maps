@@ -34,9 +34,9 @@ uniform float ks;
 uniform float Ns;
 
 // Function prototypes
-vec3 calculatePointLight(vec3 fragmentPosition, vec3 lightPosition, vec3 normal, vec3 eye, Light light);
-vec3 calculateSpotlight(vec3 fragmentPosition, vec3 lightPosition, vec3 lightDirection, vec3 normal, vec3 eye, Light light);
-vec3 calculateDirectionalLight(vec3 lightDirection, vec3 normal, vec3 eye, Light light);
+vec3 calculatePointLight(vec3 fragmentPosition, vec3 lightPosition, Light light);
+vec3 calculateSpotlight(vec3 fragmentPosition, vec3 lightPosition, vec3 lightDirection, Light light);
+vec3 calculateDirectionalLight(vec3 lightDirection, Light light);
 
 // Calculate normal and eye vectors (these are the same for all light sources)
 vec3 normal = normalize(Normal);
@@ -47,19 +47,19 @@ void main ()
     // Loop through the point light sources
     fragmentColour = vec3(0.0, 0.0, 0.0);
     for (int i = 0; i < numPoint; i++)
-        fragmentColour += calculatePointLight(fragmentPosition, lightPositions[i], normal, eye, lights[i]);
+        fragmentColour += calculatePointLight(fragmentPosition, lightPositions[i], lights[i]);
     
     // Loop through the spotlight sources
     for (int i = numPoint; i < numPoint + numSpot; i++)
-        fragmentColour += calculateSpotlight(fragmentPosition, lightPositions[i], lightDirections[i], normal, eye, lights[i]);
+        fragmentColour += calculateSpotlight(fragmentPosition, lightPositions[i], lightDirections[i], lights[i]);
     
     // Loop through the directional light sources
     for (int i = numPoint + numSpot; i < numPoint + numSpot + numDir; i++)
-        fragmentColour += calculateDirectionalLight(lightDirections[i], normal, eye, lights[i]);
+        fragmentColour += calculateDirectionalLight(lightDirections[i], lights[i]);
 }
 
 // Calculate point light
-vec3 calculatePointLight(vec3 fragmentPosition, vec3 lightPosition, vec3 normal, vec3 eye, Light light)
+vec3 calculatePointLight(vec3 fragmentPosition, vec3 lightPosition, Light light)
 {
     // Object colour
     vec3 objectColour = texture(diffuseMap, UV).rgb;
@@ -86,7 +86,7 @@ vec3 calculatePointLight(vec3 fragmentPosition, vec3 lightPosition, vec3 normal,
 }
 
 // Calculate spotlight
-vec3 calculateSpotlight(vec3 fragmentPosition, vec3 lightPosition, vec3 lightDirection, vec3 normal, vec3 eye, Light light)
+vec3 calculateSpotlight(vec3 fragmentPosition, vec3 lightPosition, vec3 lightDirection, Light light)
 {
     // Object colour
     vec3 objectColour = texture(diffuseMap, UV).rgb;
@@ -119,7 +119,7 @@ vec3 calculateSpotlight(vec3 fragmentPosition, vec3 lightPosition, vec3 lightDir
 }
 
 // Calculate directional light
-vec3 calculateDirectionalLight(vec3 lightDirection, vec3 normal, vec3 eye, Light light)
+vec3 calculateDirectionalLight(vec3 lightDirection, Light light)
 {
     // Object colour
     vec3 objectColour = texture(diffuseMap, UV).rgb;

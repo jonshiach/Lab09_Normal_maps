@@ -40,7 +40,7 @@ private:
     GLuint normalBuffer;
     
     // Load .obj file method
-    void loadObj(const char *path);
+    bool loadObj(const char *path);
     
     // Setup buffers
     void setupBuffers();
